@@ -1,5 +1,5 @@
-'use client';
-import { ReactNode } from 'react';
+"use client";
+import { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/ globals.scss";
 
@@ -13,12 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
-import { Provider } from 'react-redux';
+import { Provider } from "react-redux";
 //
-import { store } from '@store/store';
-import Header from '@/components/header/header';
-
+import { store } from "@store/store";
+import Header from "@/components/header/header";
 
 export default function RootLayout({
   children,
@@ -28,9 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-      <Provider store={store}>
-          <Header/> {children}
-      </Provider>
+        <Provider store={store}>
+          <Header /> {children}
+        </Provider>
       </body>
     </html>
   );
