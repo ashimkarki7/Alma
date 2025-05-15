@@ -3,14 +3,15 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import styles from "./header.module.css";
 import Button from "@/components/button/button";
-import { useAppSelector } from "@store/reduxHook";
+import {useAppDispatch, useAppSelector} from '@store/reduxHook';
 import Image from 'next/image';
 import Link from 'next/link';
+import {signOut} from '@component/login/slice';
 
 const Header: React.FC = () => {
   const router = useRouter();
   const users = useAppSelector((state) => state?.rootReducer?.user);
-
+  const dispatch = useAppDispatch();
   return (
     <header className={styles.publicHeader}>
       <div className={styles.content}>
@@ -29,13 +30,18 @@ const Header: React.FC = () => {
         <div className={styles.button}>
           <Button
             title={
+                users?.currentUser === "admin" ? "Manage leads" :
               users?.currentUser && users?.currentUser?.trim() !== ""
-                ? "Manage leads"
+                ? "Logout"
                 : "Login"
             }
             onClickHandler={() => {
-              if (users?.currentUser && users?.currentUser?.trim() !== "") {
+              if (users?.currentUser === "admin") {
                 router.push("/management");
+              }
+              else if (users?.currentUser && users?.currentUser?.trim() !== "") {
+                dispatch(signOut())
+                router.push('/');
               } else {
                 router.push("/login");
               }

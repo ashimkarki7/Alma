@@ -1,6 +1,7 @@
 'use client';
 import { withJsonFormsControlProps } from '@jsonforms/react';
 import { useState, ChangeEvent } from 'react';
+import styles from './FileUpload.module.css'
 
 function FileUploadRenderer(props: any) {
     const [error, setError] = useState('');
@@ -29,7 +30,7 @@ function FileUploadRenderer(props: any) {
     };
 
     return (
-        <div>
+        <div className={styles.fileUploadContainer}>
             <label>{props.label}</label>
             <input type="file" accept=".pdf,.doc,.docx" onChange={handleFileChange} />
             {error && <span style={{ color: 'red' }}>{error}</span>}

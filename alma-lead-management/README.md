@@ -1,7 +1,14 @@
+### Creating User or use existing user
+Create a user 'admin' using sign up case sensitive if user already exist use admin and pw 1234 to login 
+button and view private route 
+note only username admin is treated as admin on signing up
 ### Deployed in Vercel
 https://alma-dkwc.vercel.app/
 https://alma-dkwc-git-main-ashimkarki7s-projects.vercel.app/alma-dkwc-fwxxfyiij-ashimkarki7s-projects.vercel.app
 https://alma-dkwc-fwxxfyiij-ashimkarki7s-projects.vercel.app/
+### Node Version
+v20.9.0
+
 # Project Guide: Next.js Application
 This guide provides an overview of the project, setup instructions, and links to helpful resources. It complements the existing project setup documentation.
 ## Overview

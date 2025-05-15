@@ -14,7 +14,8 @@ import {
   rankWith,
   scopeEndsWith
 } from "@jsonforms/core";
-import FileUploadRenderer from '@component/FileUploadRenderer';
+import FileUploadRenderer from '@component/FileUploadRederer/FileUploadRenderer';
+import AdditionalInfoRenderer from '@component/AdditionalFieldRederer/AdditionalInfoRenderer';
 
 interface LeadFormData {
   firstName?: string;
@@ -36,7 +37,11 @@ interface LeadFormProps {
 
 const renderers = [
   ...materialRenderers,
-  { tester: rankWith(5, scopeEndsWith("resume")), renderer: FileUploadRenderer }
+  { tester: rankWith(5, scopeEndsWith("resume")), renderer: FileUploadRenderer },
+  {
+    tester: rankWith(4, scopeEndsWith("additionalInfo")),
+    renderer: AdditionalInfoRenderer
+  }
 ];
 const LeadForm: FC<LeadFormProps> = (props) => {
   const { submitForm } = props;
