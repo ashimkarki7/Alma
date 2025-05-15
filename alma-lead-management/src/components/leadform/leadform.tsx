@@ -8,6 +8,7 @@ import {
   materialCells,
   materialRenderers,
 } from "@jsonforms/material-renderers";
+import {IObjectLiteral} from '@/types/type';
 
 interface LeadFormData {
   firstName?: string;
@@ -20,10 +21,10 @@ interface LeadFormData {
 }
 
 interface LeadFormProps {
-  leadData?: any;
-  users?: any;
+  leadData?: IObjectLiteral;
+  users?: IObjectLiteral;
   leadDataLoading?: boolean;
-  submitForm: (formData: any) => Promise<void>;
+  submitForm: (formData: IObjectLiteral) => Promise<void>;
 }
 const LeadForm: FC<LeadFormProps> = (props) => {
   const { submitForm } = props;

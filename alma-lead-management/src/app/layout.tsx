@@ -17,9 +17,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-//
 import { store, persistor } from "@store/store";
 import Header from "@/components/header/header";
+import SideBar from "@component/SideBar/SideBar";
 
 export default function RootLayout({
   children,
@@ -27,15 +27,16 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   const pathname = usePathname();
-  const hideHeaderRoutes = ["/login"];
+  const hideHeaderRoutes = ["/login", "/management"];
+  const showAdminSidebar = ["/management"];
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             {!hideHeaderRoutes.includes(pathname as string) && <Header />}
-
-            {children}
+            {showAdminSidebar.includes(pathname as string) ? <SideBar>{children}</SideBar> : children}
           </PersistGate>
         </Provider>
       </body>

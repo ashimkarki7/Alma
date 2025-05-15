@@ -1,19 +1,21 @@
 "use client";
 import ManagePage from "@component/manage/manage";
-import * as leadFormSlice from "@component/login/slice";
+import * as leadFormSlice from "@component/leadform/slice";
 import { useAppDispatch, useAppSelector } from "@store/reduxHook";
+import {IObjectLiteral} from '@/types/type';
 
-const ManageFormContainer = (props: any) => {
+const ManageFormContainer = (props: IObjectLiteral) => {
   const dispatch = useAppDispatch();
   const users = useAppSelector((state) => state?.rootReducer?.user);
   const leadData = useAppSelector(
     (state) => state?.rootReducer?.leadData?.payload,
   );
   props = { ...props, users, leadData };
-  const signOut = (formData: any) => {
-    return dispatch(leadFormSlice.signOut(formData));
+
+  const updateLeadStatus = (formData: number) => {
+    return dispatch(leadFormSlice.updateLeadStatus(formData));
   };
 
-  return <ManagePage signOut={signOut} {...props} />;
+  return <ManagePage updateLeadStatus={updateLeadStatus}  {...props} />;
 };
 export default ManageFormContainer;

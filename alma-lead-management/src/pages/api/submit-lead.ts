@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { LeadEntry } from "@/pages/api/types";
+import {IObjectLiteral} from '@/types/type';
 
 export default async function handler(
   req: NextApiRequest,
@@ -19,7 +20,7 @@ export default async function handler(
     const country =
       randomCountries[Math.floor(Math.random() * randomCountries.length)];
 
-    const entry: LeadEntry & { formData: any } = {
+    const entry: LeadEntry & { formData: IObjectLiteral } = {
       name:
         `${data.firstName || ""} ${data.lastName || ""}`.trim() || "Unknown",
       submitted: now,
@@ -30,13 +31,11 @@ export default async function handler(
 
     try {
       console.log("Lead Submitted:", data);
-      res
-        .status(200)
-        .json({
-          message: "Lead submitted successfully.",
-          status: 200,
-          data: entry,
-        });
+      res.status(200).json({
+        message: "Lead submitted successfully.",
+        status: 200,
+        data: entry,
+      });
     } catch (error) {
       console.error("Error submitting lead:", error);
       res.status(500).json({ error: "Internal server error", status: 500 });

@@ -6,6 +6,7 @@ type ButtonProps = {
   onClickHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
   type?: "button" | "submit" | "reset";
   className?: string;
+    disabled?: boolean;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -13,11 +14,13 @@ const Button: React.FC<ButtonProps> = ({
   onClickHandler,
   type = "button",
   className = "",
+                                           disabled = false,
 }) => {
   return (
     <>
       <button
-        className={`${styles.buttonLink} ${className}`}
+          disabled={disabled}
+        className={` ${className ? styles[`${className}`] : styles.buttonLink}`}
         onClick={(event: MouseEvent<HTMLButtonElement>) =>
           onClickHandler(event)
         }

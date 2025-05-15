@@ -2,8 +2,9 @@
 import LeadFormComponent from "../leadform";
 import * as leadFormSlice from "@component/leadform/slice";
 import { useAppDispatch, useAppSelector } from "@store/reduxHook";
+import {IObjectLiteral} from '@/types/type';
 
-const LeadFormContainer = (props: any) => {
+const LeadFormContainer = (props: IObjectLiteral) => {
   const dispatch = useAppDispatch();
   const users = useAppSelector((state) => state?.rootReducer?.user);
   const leadData = useAppSelector(
@@ -14,7 +15,7 @@ const LeadFormContainer = (props: any) => {
   );
 
   props = { ...props, leadData, leadDataLoading, users };
-  const submitForm = (formData: any) => {
+  const submitForm = (formData: IObjectLiteral) => {
     return dispatch(leadFormSlice.submitForm(formData));
   };
 

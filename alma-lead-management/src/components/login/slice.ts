@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {useRouter} from 'next/navigation';
 
 export interface User {
   id: string;
@@ -34,7 +35,8 @@ export const userSlice = createSlice({
     },
     signOut(state) {
       state.currentUser = null;
-      localStorage.removeItem("auth_token");
+      localStorage.removeItem('auth_token');
+      localStorage.removeItem('persist:leadData');
     },
   },
 });

@@ -22,6 +22,7 @@
       "@/*": ["./src/*"],
       "@store/*": ["./src/store/*"],
       "@component/*": ["./src/components/*"],
+      "@enum/*": ["./src/enum/*"],
       "@leadForm/*": ["./src/components/leadForm/*"]
     }
   },

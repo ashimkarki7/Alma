@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { store } from "@/util/httpUtil";
+import {IObjectLiteral} from '@/types/type';
 
 export interface LeadEntry {
   name: string;
   submitted: string;
   status: "Pending" | "Reached Out";
   country: string;
-  formData: any;
+  formData: IObjectLiteral;
 }
 
 interface LeadState {
@@ -22,9 +23,9 @@ const initialState: LeadState = {
 };
 export const submitForm = createAsyncThunk(
   "leadData/fetch",
-  (formData: any, { rejectWithValue }) => {
+  (formData: IObjectLiteral, { rejectWithValue }) => {
     return store("api/submit-lead", { ...formData })
-      .then((response: any) => {
+      .then((response: IObjectLiteral) => {
         if (response.status === 200) {
           return Promise.resolve(response?.data);
         } else {
@@ -46,6 +47,13 @@ export const leadDataSlice = createSlice({
       state.loading = false;
       state.payload = [];
       state.error = "";
+    },
+    updateLeadStatus(state, action:any) {
+      debugger;
+      const idx = action.payload;
+      if (state.payload[idx]) {
+        state.payload[idx].status = "Reached Out";
+      }
     },
   },
   extraReducers: (builder) => {
@@ -69,4 +77,4 @@ export const leadDataSlice = createSlice({
   },
 });
 
-export const { cleanLeadData } = leadDataSlice.actions;
+export const { cleanLeadData,updateLeadStatus } = leadDataSlice.actions;

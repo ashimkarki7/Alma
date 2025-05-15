@@ -2,11 +2,12 @@
 import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 import styles from "@component/login/Login.module.css";
+import {IObjectLiteral} from '@/types/type';
 
 interface LoginFormProps {
-  users?: any;
-  signUp: (formData: any) => Promise<void>;
-  signIn: (formData: any) => Promise<void>;
+  users?: IObjectLiteral;
+  signUp: (formData: IObjectLiteral) => Promise<void>;
+  signIn: (formData: IObjectLiteral) => Promise<void>;
 }
 
 const LoginPage: FC<LoginFormProps> = (props) => {
@@ -23,7 +24,7 @@ const LoginPage: FC<LoginFormProps> = (props) => {
     if (isSignUp) {
       if (
         users?.users?.length > 0 &&
-        users?.users?.find((user: any) => user.id === id)
+        users?.users?.find((user: IObjectLiteral) => user.id === id)
       ) {
         return alert("User already exists");
       }
@@ -31,9 +32,8 @@ const LoginPage: FC<LoginFormProps> = (props) => {
       alert("User registered. You can now log in.");
       setIsSignUp(false);
     } else {
-      debugger;
       const checkUserExist = users?.users?.find(
-        (u: any) => u?.id === id && u?.password === password,
+        (usersItems: IObjectLiteral) => usersItems?.id === id && usersItems?.password === password,
       );
       signIn({ id, password });
       if (checkUserExist) {
