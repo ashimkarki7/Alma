@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {useRouter} from 'next/navigation';
 
 export interface User {
   id: string;

@@ -32,9 +32,7 @@ const LeadForm: FC<LeadFormProps> = (props) => {
   const [formData, setFormData] = useState<LeadFormData>({});
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (
-    evt?: MouseEvent<HTMLButtonElement>,
-  ): Promise<void> => {
+  const handleSubmit = async (): Promise<void> => {
     submitForm(formData)?.then((res: any) => {
       if (res?.meta?.requestStatus === "fulfilled") {
         setFormData({});
@@ -81,8 +79,8 @@ const LeadForm: FC<LeadFormProps> = (props) => {
           <div className={styles.submitWrapper}>
             <Button
               title="Submit"
-              onClickHandler={(evt: MouseEvent<HTMLButtonElement>) =>
-                handleSubmit(evt)
+              onClickHandler={() =>
+                handleSubmit()
               }
             />
           </div>

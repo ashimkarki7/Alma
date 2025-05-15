@@ -6,8 +6,8 @@ import {IObjectLiteral} from '@/types/type';
 
 interface LoginFormProps {
   users?: any;
-  signUp: (formData: any) => Promise<any>;
-  signIn: (formData: any) => Promise<any>;
+  signUp: (formData?: any) => void;
+  signIn: (formData?: any) => void
 }
 
 const LoginPage: FC<LoginFormProps> = (props) => {

@@ -12,7 +12,7 @@ const ManageFormContainer = (props: IObjectLiteral) => {
   );
   props = { ...props, users, leadData };
 
-  const updateLeadStatus = (formData: number) => {
+  const updateLeadStatus = (formData: any):any => {
     return dispatch(leadFormSlice.updateLeadStatus(formData));
   };
 

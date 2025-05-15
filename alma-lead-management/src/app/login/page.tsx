@@ -1,2 +1,5 @@
+'use client';
 import LoginContainer from "@component/login/container/loginFormContainer";
-export default LoginContainer;
+export default function LoginPage() {
+    return <LoginContainer />;
+}

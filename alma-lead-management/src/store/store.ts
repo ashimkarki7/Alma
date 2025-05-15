@@ -19,7 +19,6 @@ const persistConfig = {
   key: "leadData",
   storage,
 };
-const persistedReducer = persistReducer(persistConfig, leadDataSlice.reducer);
 
 const leadDataPersistConfig = {
   key: "leadData",

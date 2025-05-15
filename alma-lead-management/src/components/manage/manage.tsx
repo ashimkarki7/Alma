@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { FC, useState } from "react";
+import { FC } from "react";
 import styles from "@component/manage/manage.module.css";
 import {IObjectLiteral} from '@/types/type';
 import Button from '@component/button';
@@ -8,11 +8,10 @@ import Button from '@component/button';
 interface LoginFormProps {
   users?: IObjectLiteral;
   leadData?: IObjectLiteral;
-  updateLeadStatus: (formData: number) => Promise<void>;
+  updateLeadStatus: (formData: number) => void;
 }
 
 const ManagePage: FC<LoginFormProps> = (props) => {
-  const router = useRouter();
   const { leadData,updateLeadStatus } = props;
   const handleStatusChange = (index: number) => {
     updateLeadStatus(index)
