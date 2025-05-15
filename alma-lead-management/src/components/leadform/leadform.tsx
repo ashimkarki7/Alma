@@ -10,6 +10,11 @@ import {
 } from "@jsonforms/material-renderers";
 import {IObjectLiteral} from '@/types/type';
 import Image from 'next/image';
+import {
+  rankWith,
+  scopeEndsWith
+} from "@jsonforms/core";
+import FileUploadRenderer from '@component/FileUploadRenderer';
 
 interface LeadFormData {
   firstName?: string;
@@ -26,7 +31,13 @@ interface LeadFormProps {
   users?: IObjectLiteral;
   leadDataLoading?: boolean;
   submitForm: (formData: IObjectLiteral) => Promise<IObjectLiteral>;
+
 }
+
+const renderers = [
+  ...materialRenderers,
+  { tester: rankWith(5, scopeEndsWith("resume")), renderer: FileUploadRenderer }
+];
 const LeadForm: FC<LeadFormProps> = (props) => {
   const { submitForm } = props;
   const [formData, setFormData] = useState<LeadFormData>({});
@@ -69,12 +80,12 @@ const LeadForm: FC<LeadFormProps> = (props) => {
       {!submitted ? (
         <div className={styles.formWrapper}>
           <JsonForms
-            schema={leadFormSchema}
-            uischema={leadFormUISchema}
-            data={formData}
-            renderers={materialRenderers}
-            cells={materialCells}
-            onChange={({ data }) => setFormData(data)}
+              schema={leadFormSchema}
+              uischema={leadFormUISchema}
+              data={formData}
+              renderers={renderers}
+              cells={materialCells}
+              onChange={({ data }) => setFormData(data)}
           />
           <div className={styles.submitWrapper}>
             <Button
