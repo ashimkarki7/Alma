@@ -1,0 +1,48 @@
+.formContainer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+
+  .introSection {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .heading {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .description {
+    color: #555;
+    font-size: 1rem;
+  }
+
+  .formWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .submitWrapper {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .successMessage {
+    text-align: center;
+    font-size: 1.25rem;
+    color: green;
+    margin-top: 2rem;
+  }
+
+  .successDescription {
+    font-size: 1.25rem !important;
+  }
+  .icon {
+    width: 48px;
+    height: auto;
+    margin: 0 auto 1rem;
+    display: block;
+  }
+}

@@ -1,6 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+../.idea/vcs.xml
+../.idea/workspace.xml
+../.idea/webResources.xml
 /node_modules
 /.pnp
 .pnp.*
