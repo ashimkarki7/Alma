@@ -4,13 +4,13 @@ import {usePathname, useRouter} from 'next/navigation';
 import styles from "./SideBar.module.css";
 import {sideBarRoutes} from '@enum/routeList';
 import Button from '@component/button';
-import { useAppDispatch } from "@store/reduxHook";
+import {useAppDispatch, useAppSelector} from '@store/reduxHook';
 import {signOut} from '@component/login/slice';
 
 const SideBar: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-
+  const currentUser = useAppSelector((state) => state?.rootReducer?.user?.currentUser);
 
   return (
     <div className={styles.layout}>
@@ -54,7 +54,7 @@ const SideBar: FC<{ children: ReactNode }> = ({ children }: { children: ReactNod
         </div>
         <div className={styles.adminFooter}>
           <div className={styles.avatar}>A</div>
-          <span className={styles.adminLabel}>Admin</span>
+          <span className={styles.adminLabel}>{currentUser ? currentUser?.toUpperCase() : ''}</span>
         </div>
       </aside>
       <main className={styles.main}>{children}</main>

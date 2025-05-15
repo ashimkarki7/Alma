@@ -1,9 +1,10 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useAppSelector } from "@/store/hooks";
+import { useAppSelector } from "@store/reduxHook";
 
-const adminRoutes = ["/admin/leads"];
+
+const adminRoutes = ["/management"];
 
 export default function ProtectedRoute({
   children,
@@ -12,11 +13,11 @@ export default function ProtectedRoute({
 }) {
   const pathname = usePathname();
   const router = useRouter();
-  const currentUser = useAppSelector((state) => state.user.currentUser);
+  const currentUser = useAppSelector((state) => state?.rootReducer?.user?.currentUser);
 
   useEffect(() => {
     if (adminRoutes.includes(pathname as string) && currentUser !== "admin") {
-      router.push("/login");
+      router.push("/");
     }
   }, [pathname, currentUser, router]);
 

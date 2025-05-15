@@ -24,7 +24,7 @@ interface LeadFormProps {
   leadData?: IObjectLiteral;
   users?: IObjectLiteral;
   leadDataLoading?: boolean;
-  submitForm: (formData: IObjectLiteral) => Promise<void>;
+  submitForm: (formData: IObjectLiteral) => Promise<IObjectLiteral>;
 }
 const LeadForm: FC<LeadFormProps> = (props) => {
   const { submitForm } = props;

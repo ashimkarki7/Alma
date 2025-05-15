@@ -20,6 +20,7 @@ const geistMono = Geist_Mono({
 import { store, persistor } from "@store/store";
 import Header from "@/components/header/header";
 import SideBar from "@component/SideBar/SideBar";
+import ProtectedRoute from '@/util/ProtectedRoute';
 
 export default function RootLayout({
   children,
@@ -36,7 +37,7 @@ export default function RootLayout({
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             {!hideHeaderRoutes.includes(pathname as string) && <Header />}
-            {showAdminSidebar.includes(pathname as string) ? <SideBar>{children}</SideBar> : children}
+            {showAdminSidebar.includes(pathname as string) ?   <ProtectedRoute> <SideBar>{children}</SideBar>  </ProtectedRoute> : children}
           </PersistGate>
         </Provider>
       </body>

@@ -6,8 +6,8 @@ import {IObjectLiteral} from '@/types/type';
 
 interface LoginFormProps {
   users?: IObjectLiteral;
-  signUp: (formData: IObjectLiteral) => Promise<void>;
-  signIn: (formData: IObjectLiteral) => Promise<void>;
+  signUp: (formData: IObjectLiteral) => Promise<IObjectLiteral>;
+  signIn: (formData: IObjectLiteral) => Promise<IObjectLiteral>;
 }
 
 const LoginPage: FC<LoginFormProps> = (props) => {
@@ -68,6 +68,13 @@ const LoginPage: FC<LoginFormProps> = (props) => {
         {isSignUp ? "Already have an account?" : "New here?"}{" "}
         <span onClick={() => setIsSignUp(!isSignUp)}>
           {isSignUp ? "Login" : "Sign Up"}
+        </span>
+      </p>
+
+        <p className={styles.toggle}>
+
+        <span onClick={() => router.push("/")}>
+          {"Go Back To HomePage"}
         </span>
       </p>
     </div>

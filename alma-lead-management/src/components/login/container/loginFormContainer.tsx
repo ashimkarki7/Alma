@@ -10,22 +10,19 @@ const LoginFormContainer = (props: IObjectLiteral) => {
   const users = useAppSelector((state) => state?.rootReducer?.user);
 
   props = { ...props, users };
-  const signIn = (formData: IObjectLiteral) => {
+  const signIn = (formData: any): any => {
     return dispatch(leadFormSlice.signIn(formData));
   };
 
-  const signUp = (formData: IObjectLiteral) => {
+  const signUp = (formData: any):any => {
     return dispatch(leadFormSlice.signUp(formData));
   };
-  const signOut = (formData: IObjectLiteral) => {
-    return dispatch(leadFormSlice.signOut(formData));
-  };
+
 
   return (
     <LeadFormComponent
       signIn={signIn}
       signUp={signUp}
-      signOut={signOut}
       {...props}
     />
   );
