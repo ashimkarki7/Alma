@@ -1,5 +1,5 @@
 "use client";
-import React, {ReactNode, FC, MouseEvent} from 'react';
+import React, {ReactNode, FC, MouseEvent, Fragment} from 'react';
 import {usePathname, useRouter} from 'next/navigation';
 import styles from "./SideBar.module.css";
 import {sideBarRoutes} from '@enum/routeList';
@@ -18,12 +18,12 @@ const SideBar: FC<{ children: ReactNode }> = ({ children }: { children: ReactNod
         <div>
           <div className={styles.logo}>almà</div>
           <nav className={styles.navLinks}>
-            {sideBarRoutes.map((route:any) => {
+            {sideBarRoutes?.map((route:any,index:any) => {
               if (route.path === '/logout') {
                 return (
+                    <Fragment key={index}>
                     <Button
                         title={route.name}
-                        type="submit"
                         onClickHandler={(evt: MouseEvent<HTMLButtonElement>) => {
                           evt.preventDefault();
                           dispatch(signOut())
@@ -31,6 +31,7 @@ const SideBar: FC<{ children: ReactNode }> = ({ children }: { children: ReactNod
                         }
                         }
                     />
+                    </Fragment>
                 );
 
               }else {

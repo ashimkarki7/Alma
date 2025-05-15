@@ -5,9 +5,9 @@ import styles from "@component/login/Login.module.css";
 import {IObjectLiteral} from '@/types/type';
 
 interface LoginFormProps {
-  users?: IObjectLiteral;
-  signUp: (formData: IObjectLiteral) => Promise<IObjectLiteral>;
-  signIn: (formData: IObjectLiteral) => Promise<IObjectLiteral>;
+  users?: any;
+  signUp: (formData: any) => Promise<any>;
+  signIn: (formData: any) => Promise<any>;
 }
 
 const LoginPage: FC<LoginFormProps> = (props) => {

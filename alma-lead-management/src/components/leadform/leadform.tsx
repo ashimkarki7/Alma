@@ -9,6 +9,7 @@ import {
   materialRenderers,
 } from "@jsonforms/material-renderers";
 import {IObjectLiteral} from '@/types/type';
+import Image from 'next/image';
 
 interface LeadFormData {
   firstName?: string;
@@ -47,10 +48,11 @@ const LeadForm: FC<LeadFormProps> = (props) => {
   return (
     <section className={styles.formContainer}>
       <div className={styles.introSection}>
-        <img
+        <Image
           src="/images/lead-form-icon.png"
           alt="Lead Form Icon"
           className={styles.icon}
+          width={100}  height={100}
         />
         <h2 className={styles.heading}>
           {submitted ? `Thank You` : `Want to understand your visa options?`}
@@ -79,7 +81,6 @@ const LeadForm: FC<LeadFormProps> = (props) => {
           <div className={styles.submitWrapper}>
             <Button
               title="Submit"
-              type="submit"
               onClickHandler={(evt: MouseEvent<HTMLButtonElement>) =>
                 handleSubmit(evt)
               }
@@ -89,7 +90,6 @@ const LeadForm: FC<LeadFormProps> = (props) => {
       ) : (
         <div className={styles.successMessage}>
           <Button
-            type="submit"
             title="Go Back to Homepage."
             onClickHandler={(evt: MouseEvent<HTMLButtonElement>) =>
               setSubmitted(false)

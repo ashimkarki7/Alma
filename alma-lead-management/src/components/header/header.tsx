@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import styles from "./header.module.css";
 import Button from "@/components/button/button";
 import { useAppSelector } from "@store/reduxHook";
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -12,11 +14,11 @@ const Header: React.FC = () => {
   return (
     <header className={styles.publicHeader}>
       <div className={styles.content}>
-        <a href="/">
+        <Link href="/">
           <div className={styles.logoImage}>
-            <img src="/images/greenicon.png" alt="Green Disc" />
+            <Image  src="/images/greenicon.png" alt="Green Disc" width={100}  height={100} />
           </div>
-        </a>
+        </Link>
         <div className={styles.text}>
           <span className={styles.logo}>almà</span>
           <h1 className={styles.title}>
