@@ -1,3 +1,7 @@
+### Deployed in Vercel
+https://alma-dkwc.vercel.app/
+https://alma-dkwc-git-main-ashimkarki7s-projects.vercel.app/alma-dkwc-fwxxfyiij-ashimkarki7s-projects.vercel.app
+https://alma-dkwc-fwxxfyiij-ashimkarki7s-projects.vercel.app/
 # Project Guide: Next.js Application
 This guide provides an overview of the project, setup instructions, and links to helpful resources. It complements the existing project setup documentation.
 ## Overview
